@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book List</title>
+  <link rel="stylesheet" href="styles/nav.css">
+  <link rel="stylesheet" href="styles/book.css">
+ </head>
+ 
+<body>
+<nav id="main-navbar"></nav>
+<h1>Welcome to My Bookstore!</h1>
+<h3 class="browse">Browse our collection of books</h3>
+  <!-- Search form -->
+   <form id="books-search" method="POST">
+      <input type="text" name="search" placeholder="Type title and author name.."></input>
+  </form>
+  
+ <!-- Container to display the book list -->
+  <div id="books-list"></div>
+
+  <!-- Below is Javascript code -->
+  <script>
+     // Include navbar using AJAX
+     fetch('nav.php', {
+            method: 'get',
+        }).then(res => res.text())
+            .then(function (result) {
+                document.getElementById('main-navbar').innerHTML = result;
+            });
+
+     // Called when page is loaded
+    fetch('getting-book.php', {
+            method: 'get'
+        }).then(res => res.text())
+            .then(function (result) {
+                document.getElementById('books-list').innerHTML = result;
+            });
+
+        // Called when user search
+        document.querySelector("input[name='search']").addEventListener('input', function (event) {
+            let data = new FormData();
+            data.append("search", this.value);
+
+            fetch('getting-book.php', {
+                method: 'post',
+                body: data
+            }).then(res => res.text())
+                .then(function (result) {
+                    document.getElementById('books-list').innerHTML = result;
+                });
+        });
+  </script>
+</body>
+</html>

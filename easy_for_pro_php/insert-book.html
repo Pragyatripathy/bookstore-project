@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add a Book</title>
+    <link rel="stylesheet" href="styles/nav.css" />
+    <link rel="stylesheet" href="./styles/insert.css" />
+  </head>
+  <body>
+    <!-- navigation bar -->
+    <nav id="main-navbar"></nav>
+
+    <div class="container">
+      <h2 class="form-heading">Add a Book</h2>
+      <p id="message"></p>
+
+      <!-- form to add a book details into database -->
+      <form id="add-book-form">
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required />
+        </div>
+
+        <div class="form-group">
+          <label for="author">Author:</label>
+          <input type="text" id="author" name="author" required />
+        </div>
+
+        <div class="form-group">
+          <label for="publication_date">Publication Date:</label>
+          <input
+            type="date"
+            id="publication_date"
+            name="publication_date"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="isbn">ISBN:</label>
+          <input type="text" id="isbn" name="isbn" required />
+        </div>
+
+        <div class="form-group">
+          <h3>Available Formats:</h3>
+          <div class="checkbox-group">
+            <input
+              type="checkbox"
+              id="paperback"
+              name="formats[]"
+              value="paperback"
+            />
+            <label for="paperback">Paperback</label>
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="ebook" name="formats[]" value="ebook" />
+            <label for="ebook">Ebook</label>
+          </div>
+          <div class="checkbox-group">
+            <input
+              type="checkbox"
+              id="audiobook"
+              name="formats[]"
+              value="audiobook"
+            />
+            <label for="audiobook">Audiobook</label>
+          </div>
+        </div>
+
+        <button type="submit" class="form-button">Add Book</button>
+      </form>
+    </div>
+
+    <script>
+      // Include navbar using AJAX
+      fetch("nav.php", {
+        method: "get",
+      })
+        .then((res) => res.text())
+        .then(function (result) {
+          document.getElementById("main-navbar").innerHTML = result;
+        });
+
+      //To  handle form submission using AJAX
+
+      document
+        .querySelector("form")
+        .addEventListener("submit", function (event) {
+          // Prevent the page to 'refresh'
+          event.preventDefault();
+          let form = this;
+
+          fetch("new-book.php", {
+            method: "post",
+            body: new FormData(form),
+          })
+            .then((res) => res.text())
+            .then(function (result) {
+              //console.log(result);
+              document.getElementById("message").innerHTML = result;
+            });
+        });
+    </script>
+  </body>
+</html>

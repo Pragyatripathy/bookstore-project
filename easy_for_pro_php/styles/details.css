@@ -1,0 +1,102 @@
+ .container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+.detail-heading {
+  text-align: center;
+  color:#e97210 ;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Book details section */
+.book-details-section {
+  margin-top: 20px;
+}
+
+/* Book title styling */
+.book-title {
+  font-size: 25px;
+  font-weight: bold;
+  color: #390cef;
+  margin-bottom: 15px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+/* Book card styling */
+.book-card {
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.book-card p {
+  margin-bottom: 8px;
+}
+
+/* Reviews section */
+.reviews-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.reviews-section h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #34495e;
+  margin-bottom: 10px;
+  flex-basis: 100%;
+}
+
+.review-text {
+  flex-basis: calc(50% - 10px);
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.rating-text {
+  flex-basis: calc(50% - 10px);
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333333;
+}
+/* Responsive styling */
+@media (max-width: 600px) {
+  .container {
+      padding: 15px;
+  }
+  .book-title {
+      font-size: 20px;
+  }
+  .reviews-section h2 {
+    font-size: 18px;
+  }
+  .review-text,
+  .rating-text {
+    flex-basis: 100%;
+  }
+}
